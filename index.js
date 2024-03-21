@@ -1,25 +1,64 @@
-const sendButton = document.getElementById('sendButton');
-const inputText = document.getElementById('inputText');
-const responseElement = document.getElementById('response');
+// 講習会参加者のエンドポイント
+const endpoints = [
+  { name: "", value: "Choose User" },
+  { name: "ktsuji", value: "neon light" },
+  {
+    name: "yyamaguchi",
+    value:
+      "https://aas4nojujl.execute-api.ap-southeast-1.amazonaws.com/development",
+  },
+  { name: "ksakabe", value: "endpoint" },
+  { name: "nmasuda", value: "endpoint" },
+  { name: "hoka", value: "endpoint" },
+  { name: "skawata", value: "endpoint" },
+  { name: "afujimoto", value: "endpoint" },
+  { name: "user", value: "endpoint" },
+];
 
-sendButton.addEventListener('click', () => {
-  const url = 'https://aas4nojujl.execute-api.ap-southeast-1.amazonaws.com/development';
+const sendButton = document.getElementById("sendButton");
+const inputText = document.getElementById("inputText");
+const response = document.getElementById("response");
+const dropdown = document.getElementById("dropdown");
+
+
+/**
+ * ドロップダウンアイテムの定義
+ */
+endpoints.forEach((item) => {
+  const option = document.createElement("option");
+
+  option.value = item["name"];
+  option.textContent = item["name"];
+
+  dropdown.appendChild(option);
+});
+
+// dropdown.addEventListener("change", () => {
+//   const selectValue = document.getElementById("ppp");
+//   selectValue.textContent = endpoints[dropdown.selectedIndex]["name"];
+// });
+
+/**
+ * API実行
+ */
+sendButton.addEventListener("click", () => {
+  const url = endpoints[dropdown.selectedIndex]["value"]; // 選択中ユーザに応じたエンドポイントの設定
   const data = { key1: inputText.value };
 
   fetch(url, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(data),
   })
-  .then(response => response.json())
-  .then(data => {
-    responseElement.textContent = JSON.stringify(data, null, 2);
-    alert('Success!');
-  })
-  .catch(error => {
-    responseElement.textContent = JSON.stringify(error, null, 2);
-    alert('Error!');
-  });
+    .then((response) => response.json())
+    .then((data) => {
+      response.textContent = JSON.stringify(data, null, 2);
+      //   alert("Success!");
+    })
+    .catch((error) => {
+      response.textContent = JSON.stringify(error, null, 2);
+      alert("Error!");
+    });
 });

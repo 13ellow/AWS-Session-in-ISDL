@@ -21,18 +21,22 @@
 
 .content{
     padding: 40px 0px 0px 10px;
+    height: 600px;
 }
 
-#inputText{
+#sendbox{
+    display: flex;
+    justify-content: center;
+}
+
+
+.inputText{
     text-align: center;
     border-radius: 10%;
-    /* margin: 1%; */
-    align-items: center;
+    margin-right: 1em;
 }
 
 #response{
     background-color: cornsilk;
     text-align: center;
-    vertical-align:middle;
-    height: 3em;
 }
