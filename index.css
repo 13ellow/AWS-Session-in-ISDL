@@ -23,20 +23,38 @@
     padding: 40px 0px 0px 10px;
     height: 600px;
 }
+#dropdown{
+    margin: 0 auto;
+    width: 20%;
+}
 
 #sendbox{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    width: 30%;
+    margin: 0 auto;
 }
 
-
-.inputText{
-    text-align: center;
-    border-radius: 10%;
-    margin-right: 1em;
+#sendButton{
+    margin: 0 auto;
+    width: 20%;
+    margin-top: 30px !important;
 }
+
 
 #response{
     background-color: cornsilk;
     text-align: center;
+}
+
+#inputMessage{
+    height: 100px;
+}
+
+
+#getButton{
+    margin: 0 auto;
+    width: 20%;
+    margin-top: 30px !important;
 }
