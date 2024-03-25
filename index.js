@@ -17,7 +17,8 @@ const endpoints = [
 
 const sendButton = document.getElementById("sendButton");
 const getButton = document.getElementById("getButton");
-const inputText = document.getElementById("inputText");
+const inputUser = document.getElementById("inputUser");
+const inputMessage = document.getElementById("inputMessage");
 const response = document.getElementById("response");
 const dropdown = document.getElementById("dropdown");
 
@@ -44,7 +45,7 @@ endpoints.forEach((item) => {
  */
 sendButton.addEventListener("click", () => {
   const url = endpoints[dropdown.selectedIndex]["value"]; // 選択中ユーザに応じたエンドポイントの設定
-  const data = { key1: inputText.value };
+  const data = { key1: inputUser.value , key2: inputMessage.value};
 
   fetch(url, {
     method: "POST",
