@@ -1,7 +1,7 @@
 // 講習会参加者のエンドポイント
 const endpoints = [
   { name: "", value: "Choose User" },
-  { name: "ktsuji", value: "neon light" },
+  { name: "ktsuji", value: "https://nf0p1i9yzf.execute-api.ap-southeast-1.amazonaws.com/dev/" },
   {
     name: "yyamaguchi",
     value:
@@ -16,6 +16,7 @@ const endpoints = [
 ];
 
 const sendButton = document.getElementById("sendButton");
+const getButton = document.getElementById("getButton");
 const inputText = document.getElementById("inputText");
 const response = document.getElementById("response");
 const dropdown = document.getElementById("dropdown");
@@ -51,6 +52,26 @@ sendButton.addEventListener("click", () => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      response.textContent = JSON.stringify(data, null, 2);
+      //   alert("Success!");
+    })
+    .catch((error) => {
+      response.textContent = JSON.stringify(error, null, 2);
+      alert("Error!");
+    });
+});
+
+getButton.addEventListener("click", () => {
+  const url = endpoints[dropdown.selectedIndex]["value"]; // 選択中ユーザに応じたエンドポイントの設定
+
+  fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
   })
     .then((response) => response.json())
     .then((data) => {
