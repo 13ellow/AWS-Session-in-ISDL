@@ -1,11 +1,11 @@
 // 講習会参加者のエンドポイント
 const endpoints = [
   { name: "", value: "Choose User" },
-  { name: "ktsuji", value: "https://nf0p1i9yzf.execute-api.ap-southeast-1.amazonaws.com/dev/" },
+  { name: "ktsuji", value: "endpoint" },
   {
     name: "yyamaguchi",
     value:
-      "https://aas4nojujl.execute-api.ap-southeast-1.amazonaws.com/development",
+      "endpoint",
   },
   { name: "ksakabe", value: "endpoint" },
   { name: "nmasuda", value: "endpoint" },
